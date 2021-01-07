@@ -138,7 +138,7 @@ render = () => {
 function init() {
     inquirer.prompt(start).then(answer) => {
         console.log('Generating Development Team...');
-        writeToFile('./develop/output/team.html', )
+        writeToFile('./Develop/output/team.html', )
     }
 }
 
