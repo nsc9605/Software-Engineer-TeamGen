@@ -1,156 +1,173 @@
 // const Employee = require('./lib/Employee');
-const Manager = require('./lib/Manager');
-const Engineer = require('./lib/Engineer');
-const Intern = require('./lib/Intern');
-const inquirer = require('inquirer');
-const path = require('path');
-const fs = require('fs');
-// const jest = require('jest');
+const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const inquirer = require("inquirer");
+const path = require("path");
+const fs = require("fs");
 
-const OUTPUT_DIR = path.resolve(__dirname, 'output');
-const outputPath = path.join(OUTPUT_DIR, 'team.html');
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require('./lib/htmlRenderer');
+const render = require("./lib/htmlRenderer");
 var teamMembers = [];
-
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-var employeeRole = [
-    {
-        type: 'list',
-        name: 'jobTitle',
-        message: 'Which best describes the employee/s role?', 
-        choices: [
-            'Engineer',
-            'Intern',
-            'Manager',
-            'No more employees to add'
-        ],
-    },
+// Overall starting question to specify which array of questions user should be prompted with.
+var employeeTitle = [
+  {
+    type: "list",
+    name: "jobTitle",
+    message: "Please select the role of the employee:?",
+    choices: [
+      "Engineer",
+      "Intern",
+      "Manager",
+      "Complete roster, no employees left to add.",
+    ],
+  },
 ];
 
+// Array of questions targeted for 'Engineer' jobTitle.
 var devEngineerQuest = [
-    {
-        type: 'input',
-        message: 'Please enter your name (first and last):',
-        name: 'name', 
-    },
-    {
-        type: 'input',
-        message: 'Please enter your employee ID number:',
-        name: 'id',
-    },
-    {
-        type: 'input',
-        message: 'Please enter your email address:',
-        name: 'email',
-    },
-    {
-        type: 'input',
-        message: 'Please enter your GitHub username:',
-        name: 'github',
-    },
+  {
+    type: "input",
+    message: "Please enter employee name (first and last):",
+    name: "name",
+  },
+  {
+    type: "input",
+    message: "Please enter employee\'s ID number:",
+    name: "id",
+  },
+  {
+    type: "input",
+    message: "Please enter employee\'s email address:",
+    name: "email",
+  },
+  {
+    type: "input",
+    message: "Please enter employee\'s GitHub username:",
+    name: "github",
+  },
 ];
 
+// Array of questions targeted for 'Intern' job title.
 var devInternQuest = [
-    {
-        type: 'input',
-        message: 'Please enter your name (first and last):',
-        name: 'name', 
-    },
-    {
-        type: 'input',
-        message: 'Please enter your employee ID number:',
-        name: 'id',
-    },
-    {
-        type: 'input',
-        message: 'Please enter your email address:',
-        name: 'email',
-    },
-    {
-        type: 'input',
-        message: 'Please enter the school you attend',
-        name: 'school',
-    },
+  {
+    type: "input",
+    message: "Please enter employee name (first and last):",
+    name: "name",
+  },
+  {
+    type: "input",
+    message: "Please enter your employee\'s ID number:",
+    name: "id",
+  },
+  {
+    type: "input",
+    message: "Please enter employee\'s email address:",
+    name: "email",
+  },
+  {
+    type: "input",
+    message: "Please enter the school employee attends",
+    name: "school",
+  },
 ];
 
+// Array of questions targeted for 'Manager' job title.
 var devManagerQuest = [
-    {
-        type: 'input',
-        message: 'Please enter your name (first and last):', 
-        name: 'name',
-    },
-    {
-        type: 'input',
-        message: 'Please enter your employee ID number:', 
-        name: 'id',
-    },
-    {
-        type: 'input',
-        message: 'Please enter your email address:',
-        name: 'email',
-    },
-    {
-        type: 'input',
-        message: 'Please enter your office number:',
-        name: 'officeNumber',
-    },
+  {
+    type: "input",
+    message: "Please enter your name (first and last):",
+    name: "name",
+  },
+  {
+    type: "input",
+    message: "Please enter employee\'s ID number:",
+    name: "id",
+  },
+  {
+    type: "input",
+    message: "Please enter employee\'s email address:",
+    name: "email",
+  },
+  {
+    type: "input",
+    message: "Please enter employee\s office number:",
+    name: "officeNumber",
+  },
 ];
 
-promptEmployeeQuestions();
+generateTeam();
 
-function promptEmployeeQuestions() {
-    inquirer.prompt(employeeRole).then(function (response) {
-        console.log(response);
-        return response;
-    }).then (function (response) {
-        if (response.jobTitle === 'Engineer') {
-            inquirer.prompt(devEngineerQuest).then(data => {
-                console.log(data);
+// Function to prompt the user with questions based on job title to generate software team.
+function generateTeam() {
+  inquirer.prompt(employeeTitle)
+    .then(function (response) {
+      console.log(response);
+      return response;
+    })
+    .then(function (response) {
+      // If user selects 'Engineer' as job title--prompt with questions for engineer
+      if (response.jobTitle === 'Engineer') {
+        inquirer.prompt(devEngineerQuest).then((response) => {
+          console.log(response);
 
-                var newEngineer = new Engineer(
-                    data.name, 
-                    data.id,
-                    data.email, 
-                    data.github
-                );
-                teamMembers.push(newEngineer);
-                promptEmployeeQuestions();
-            });
-        } else if (response.jobTitle === 'Manager') {
-            inquirer.prompt(devManagerQuest).then((data) => {
-                console.log(data);
+          var newEngineer = new Engineer(
+            response.name,
+            response.id,
+            response.email,
+            response.github
+          );
+          teamMembers.push(newEngineer);
+          console.log('A new engineer has been added to your team!');
+          generateTeam();
+        });
 
-                var newManager = new Manager(
-                    data.name, 
-                    data.id,
-                    data.email,
-                    data.officeNumber,
-                );
-                teamMembers.push(newManager);
-                promptEmployeeQuestions();
-            });
-        } else if (response.jobTitle === 'Intern') {
-            inquirer.prompt(devInternQuest).then((data) => {
-                console.log(data);
+        // If user selects 'Manager' as job title--prompt with questions for manager
+      } else if (response.jobTitle === 'Manager') {
+        inquirer.prompt(devManagerQuest).then((response) => {
+          console.log(response);
 
-                var newIntern = new Intern(
-                    data.name, 
-                    data.id,
-                    data.email,
-                    data.school
-                );
-                teamMembers.push(newIntern);
-                promptEmployeeQuestions();
-            });
-        } else {
-            var html = render(teamMembers);
-            fs.writeFile(outputPath, html, (error) => {
-                if (error) throw error;
-            });
-        };
+          var newManager = new Manager(
+            response.name,
+            response.id,
+            response.email,
+            response.officeNumber
+          );
+          teamMembers.push(newManager);
+          console.log('A new manager has been added to your team!');
+          generateTeam();
+        });
+
+        // If user selects 'Intern' as job title--prompt with questions for intern
+      } else if (response.jobTitle === 'Intern') {
+        inquirer.prompt(devInternQuest).then((response) => {
+          console.log(response);
+
+          var newIntern = new Intern(
+            response.name,
+            response.id,
+            response.email,
+            response.school
+          );
+          teamMembers.push(newIntern);
+
+          console.log('A new intern has been added to your team!');
+          generateTeam();
+        });
+
+        // If user selects 'Engineer' as job title--prompt with questions for engineer
+      } else {
+        var main = render(teamMembers);
+        fs.writeFile(outputPath, main, (err) => {
+          if (err) throw err;
+          console.log('Your new team has been generated in the team.html file!')
+        });
+      }
     });
-};
+}
