@@ -4,7 +4,7 @@
 
   ## Description
 
-  This is a software engineering team generator command line application using Node CLI. This assists in creating a team for employers to help with numerous employees with different job types such as manager, intern, and engineer..
+  This is a software engineering team generator that functions through the command line using Node CLI. This assists in creating a team for employers to help organize teams of numerous employees with different job types such as manager, intern, and engineer. 
 
   
   ## Table of Contents
@@ -21,14 +21,17 @@
 
   The following dependencies are required to be installed for this application to run properly:
       
-      npm i, node CLI, 
+      Node.js
+      npm install inquirer (npm i)
 
 
   ## Usage
 
   Please follow the directions below in order to run this app:
 
-      Run in the command line.
+      Run in the command line through the Terminal(Mac) or Gitbash(Windows).
+      
+      <code>node app.js</code>
 
 
   ## License

@@ -19,7 +19,7 @@ var teamMembers = [];
 var employeeTitle = [
   {
     type: "list",
-    name: "jobTitle",
+    name: "role",
     message: "Please select the role of the employee:?",
     choices: [
       "Engineer",
@@ -30,26 +30,26 @@ var employeeTitle = [
   },
 ];
 
-// Array of questions targeted for 'Engineer' jobTitle.
+// Array of questions targeted for 'Engineer' role.
 var devEngineerQuest = [
   {
     type: "input",
-    message: "Please enter employee name (first and last):",
+    message: "Please enter engineer\'s name (first and last):",
     name: "name",
   },
   {
     type: "input",
-    message: "Please enter employee\'s ID number:",
+    message: "Please enter engineer\'s ID number:",
     name: "id",
   },
   {
     type: "input",
-    message: "Please enter employee\'s email address:",
+    message: "Please enter engineer\'s email address:",
     name: "email",
   },
   {
     type: "input",
-    message: "Please enter employee\'s GitHub username:",
+    message: "Please enter engineer\'s GitHub username:",
     name: "github",
   },
 ];
@@ -58,22 +58,22 @@ var devEngineerQuest = [
 var devInternQuest = [
   {
     type: "input",
-    message: "Please enter employee name (first and last):",
+    message: "Please enter intern\'s name (first and last):",
     name: "name",
   },
   {
     type: "input",
-    message: "Please enter your employee\'s ID number:",
+    message: "Please enter your intern\'s ID number:",
     name: "id",
   },
   {
     type: "input",
-    message: "Please enter employee\'s email address:",
+    message: "Please enter intern\'s email address:",
     name: "email",
   },
   {
     type: "input",
-    message: "Please enter the school employee attends",
+    message: "Please enter the school intern attends:",
     name: "school",
   },
 ];
@@ -82,22 +82,22 @@ var devInternQuest = [
 var devManagerQuest = [
   {
     type: "input",
-    message: "Please enter your name (first and last):",
+    message: "Please enter manager\'s name (first and last):",
     name: "name",
   },
   {
     type: "input",
-    message: "Please enter employee\'s ID number:",
+    message: "Please enter manager\'s ID number:",
     name: "id",
   },
   {
     type: "input",
-    message: "Please enter employee\'s email address:",
+    message: "Please enter manager\'s email address:",
     name: "email",
   },
   {
     type: "input",
-    message: "Please enter employee\s office number:",
+    message: "Please enter manager\s office number:",
     name: "officeNumber",
   },
 ];
@@ -113,7 +113,7 @@ function generateTeam() {
     })
     .then(function (response) {
       // If user selects 'Engineer' as job title--prompt with questions for engineer
-      if (response.jobTitle === 'Engineer') {
+      if (response.role === 'Engineer') {
         inquirer.prompt(devEngineerQuest).then((response) => {
           console.log(response);
 
@@ -129,7 +129,7 @@ function generateTeam() {
         });
 
         // If user selects 'Manager' as job title--prompt with questions for manager
-      } else if (response.jobTitle === 'Manager') {
+      } else if (response.role === 'Manager') {
         inquirer.prompt(devManagerQuest).then((response) => {
           console.log(response);
 
@@ -145,7 +145,7 @@ function generateTeam() {
         });
 
         // If user selects 'Intern' as job title--prompt with questions for intern
-      } else if (response.jobTitle === 'Intern') {
+      } else if (response.role === 'Intern') {
         inquirer.prompt(devInternQuest).then((response) => {
           console.log(response);
 
