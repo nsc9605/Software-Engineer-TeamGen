@@ -23,14 +23,13 @@
       
       Node.js
       npm install inquirer (npm i)
+      jest
 
 
   ## Usage
 
-  Please follow the directions below in order to run this app:
+  Navigate into the <code>Develop</code> folder through the terminal/gitbash and follow the directions below in order to run this app:
 
-      Run in the command line through the Terminal(Mac) or Gitbash(Windows).
-      
       node app.js
 
 
