@@ -21,13 +21,15 @@
 ![Software TeamGen](Assets/teamGen.gif)
 
 [Click to view the full video](https://youtu.be/te0awutDMDA)
+
+
   ## Installation
 
   The following dependencies are required to be installed for this application to run properly:
       
       Node.js
       npm install inquirer (npm i)
-      jest
+      npm install jest
 
 
   ## Usage
@@ -52,7 +54,7 @@
   ## Tests
   The following is needed to run the test to make sure all the dependencies are installed properly for the application to run successfully: 
 
-      npm test
+      npm run test
       
     
   ## Questions
