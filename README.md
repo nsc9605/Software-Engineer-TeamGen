@@ -18,6 +18,10 @@
 
 ## Demonstration 
 
+### HTML Demo
+![Software Team Generator](Assets/softwareEng.png)
+
+### Functionality / Walk Through GIF
 ![Software TeamGen](Assets/teamGen.gif)
 
 [Click to view the full video](https://youtu.be/te0awutDMDA)
