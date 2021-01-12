@@ -6,7 +6,6 @@
 
   This is a Software Engineering Team Generator that functions through the command line using Node CLI. This assists in creating a team for employers to help organize teams of numerous employees with different job titles. This application prompts the user to provide information about members of their team. The user can input an unlimited amount of team members with different questions pertaining to which role was chosen. There are three main input questions that are asked for each role including <code>name, id, and email</code>. Each role has one extra question that is specific to that role that will be prompted. When the user has completed building the team, they can simply select <code>Complete roster, no employees left to add</code> which will complete the application and develop the HTML file of team members.
 
-  
   ## Table of Contents
   
   * [Installation](#installation)
@@ -17,6 +16,11 @@
   * [Questions](#questions)
  
 
+## Demonstration 
+
+![Software TeamGen](Assets/teamGen.gif)
+
+[Click to view the full video](https://youtu.be/te0awutDMDA)
   ## Installation
 
   The following dependencies are required to be installed for this application to run properly:

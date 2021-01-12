@@ -34,7 +34,7 @@ var employeeTitle = [
 var devEngineerQuest = [
   {
     type: "input",
-    message: "Please enter engineer\'s name (first and last):",
+    message: "Please enter engineer\'s name:",
     name: "name",
   },
   {
@@ -58,7 +58,7 @@ var devEngineerQuest = [
 var devInternQuest = [
   {
     type: "input",
-    message: "Please enter intern\'s name (first and last):",
+    message: "Please enter intern\'s name:",
     name: "name",
   },
   {
@@ -82,7 +82,7 @@ var devInternQuest = [
 var devManagerQuest = [
   {
     type: "input",
-    message: "Please enter manager\'s name (first and last):",
+    message: "Please enter manager\'s name:",
     name: "name",
   },
   {
